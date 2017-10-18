@@ -19,7 +19,7 @@
 | “Kaggle Datasets: The best place to discover and seamlessly analyze open data” | https://www.kaggle.com/datasets |
 | Google BigQuery Public Datasets | https://cloud.google.com/bigquery/public-data |
 | “Data and code behind the stories and interactives at FiveThirtyEight” | https://github.com/fivethirtyeight/data |
-| "DATA FOR MATLAB HACKERS" | http://cs.nyu.edu/~roweis/data.html |
+| New York University: "Data for MATLAB Hackers" | http://cs.nyu.edu/~roweis/data.html |
 
 ### Machine Learning
 
