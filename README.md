@@ -3,6 +3,7 @@
 ## Details
 
 **Description**: Focus on how Machine Learning is applied to a problem, rather than the actual implementation. Work in pairs is allowed.
+
 **Proposal**: Due Oct. 31st, 2017.
 
 ## Resources
