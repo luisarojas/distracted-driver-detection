@@ -21,6 +21,7 @@
 | Google BigQuery Public Datasets | https://cloud.google.com/bigquery/public-data |
 | “Data and code behind the stories and interactives at FiveThirtyEight” | https://github.com/fivethirtyeight/data |
 | New York University: "Data for MATLAB Hackers" | http://cs.nyu.edu/~roweis/data.html |
+| Kaggle: Stack Overflow Developer Survey, 2017: A look into the lives of over 64,000 Stack Overflow developers|https://www.kaggle.com/stackoverflow/so-survey-2017/data|
 
 ### Machine Learning
 
