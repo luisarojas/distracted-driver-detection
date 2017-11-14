@@ -2,9 +2,29 @@
 
 ## Details
 
+### Deliverables
+
 **Description**: Focus on how Machine Learning is applied to a problem, rather than the actual implementation. Work in pairs is allowed.
 
 **Proposal**: Due Oct. 31st, 2017.
+**Finished Project Presentation**: November 29th, 2017
+**Finished Project Report**: December 8th, 2017
+
+### Objective
+
+Predict the likelihood of what the driver is doing in each of the pictures in the   dataset.
+
+### Method
+
+We will split the data, where 70% will correspond to the training set, and the remaining 30% will correspond to the test set. After, the ratio can be adjusted as we see fit, depending on the network’s behaviour.
+
+First, we will implement a simple Feedforward Neural Network with a single hidden layer. In order to minimize the change of overfitting, we will apply regularization to find the optimal 2 value.
+
+Once this value has been found, we will increase the number of hidden layers. After, the number of hidden layers will be increased depending on it’s performance. It’s important to note that this will involve an unknown upper bound, since we are limited by computational power.
+
+Finally, we will implement a Convolutional Neural Network and observe how it performs against the aforementioned methods. The differences of the methods applied will be illustrated through several graphs in terms of efficiency and accuracy. Our hypothesis is that this method will outperform the rest and will be accurate enough to qualify for the competition’s leaderboards.
+
+We will accomplish the above using Python as our programming language and either Tensorflow or Keras as our framework, or using the Octave programming language.
 
 ## Resources
 
@@ -12,27 +32,13 @@
 
 | Description | Link |
 | ----------- | ---- |
-| “A topic-centric list of high-quality open datasets in public domains. By everyone, for everyone!” | https://github.com/caesar0301/awesome-public-datasets |
-| AWS Public Datasets | https://aws.amazon.com/datasets |
-| Tutorial to use the Twitter API to capture tweets | https://www.dataquest.io/blog/streaming-data-python |
-| OpenDataSoft: Datasets already open and ready to use | https://data.opendatasoft.com/explore/dataset/open-data-sources%40public/?sort=code_en |
-| The World Bank DataBank| http://databank.worldbank.org/data/home.aspx |
-| “Kaggle Datasets: The best place to discover and seamlessly analyze open data” | https://www.kaggle.com/datasets |
-| Google BigQuery Public Datasets | https://cloud.google.com/bigquery/public-data |
-| “Data and code behind the stories and interactives at FiveThirtyEight” | https://github.com/fivethirtyeight/data |
-| New York University: "Data for MATLAB Hackers" | http://cs.nyu.edu/~roweis/data.html |
-| Kaggle: Stack Overflow Developer Survey, 2017: A look into the lives of over 64,000 Stack Overflow developers|https://www.kaggle.com/stackoverflow/so-survey-2017/data|
+| Kaggle: "State Farm Distracted Driver Detection" | https://www.kaggle.com/c/state-farm-distracted-driver-detection/data |
 
 ### Machine Learning
 
 | Tool | Link |
 | ---- | ---- |
 | TensorFlow | https://www.tensorflow.org |
-| Weka | https://www.cs.waikato.ac.nz/ml/weka/index.html |
-| Microsoft Azure Machine Learning Studio | https://studio.azureml.net |
+| Keras | https://keras.io |
+| Octave | https://www.gnu.org/software/octave |
 
-### Other
-
-| Description | Link |
-| ---- | ---- |
-| Kaggle Kernels: ”The best place to explore data science results and share your own work” | https://www.kaggle.com
