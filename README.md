@@ -6,9 +6,11 @@
 
 **Description**: Focus on how Machine Learning is applied to a problem, rather than the actual implementation. Work in pairs is allowed.
 
-**Proposal**: Due Oct. 31st, 2017.
-**Finished Project Presentation**: November 29th, 2017
-**Finished Project Report**: December 8th, 2017
+<strike>**Proposal**: Due Oct. 31st, 2017.</strike>
+**Project Presentation**: November 29th, 2017
+> 10 minutes (7 minute presentation + demo, 3 min QA and discussion)
+
+**Project Report**: December 8th, 2017
 
 ### Objective
 
