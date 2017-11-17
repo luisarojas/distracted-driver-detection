@@ -17,8 +17,8 @@ title: Action Classification on Driving Images
 email: luisa.rojasgarcia@uoit.net
 description: >- # this means to ignore newlines until "baseurl:"
     Final project for (MCSC 6230G).
-baseurl: "/docs" # the subpath of your site, e.g. /blog
-url: "localhost:4000" # the base hostname & protocol for your site, e.g. http://example.com
+# baseurl: "/docs" # the subpath of your site, e.g. /blog
+# url: "lrojas12.github.io/driving-image-classification" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: luirogar
 github_username:  lrojas12
 
