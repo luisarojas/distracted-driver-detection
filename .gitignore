@@ -3,3 +3,4 @@
 # unzipped data
 dataset/train/
 dataset/test/
+dataset/driver_imgs_list.csv*
