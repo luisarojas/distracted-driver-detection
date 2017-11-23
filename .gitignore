@@ -1,6 +1,5 @@
 .DS_Store
 
 # unzipped data
-dataset/train
-dataset/test
-dataset/driver_imgs_list.csv
+dataset/train/
+dataset/test/
