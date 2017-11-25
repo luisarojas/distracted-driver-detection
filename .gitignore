@@ -4,3 +4,6 @@
 dataset/train/
 dataset/test/
 dataset/driver_imgs_list.csv*
+
+# practice projects
+cnn-test/
