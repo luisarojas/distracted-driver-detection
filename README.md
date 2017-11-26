@@ -57,11 +57,12 @@ We will accomplish the above using Python as our programming language and either
 		https://www.topbots.com/14-design-patterns-improve-convolutional-neural-network-cnn-architecture/
 		https://wiki.tum.de/display/lfdv/Convolutional+Neural+Network+Architectures#ConvolutionalNeuralNetworkArchitectures-AlexNet
 	
-	* On CNN Implementations
+	* On CNN Implementations Using Same Dataset
 		
 		http://cs231n.github.io/
 		https://www.cs.toronto.edu/~frossard/vgg16/vgg16.py
 		https://benanne.github.io/2015/03/17/plankton.html
+		http://soteriasafedriving.com/
 
 * **Papers**
 
