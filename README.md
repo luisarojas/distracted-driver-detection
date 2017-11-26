@@ -42,6 +42,31 @@ We will accomplish the above using Python as our programming language and either
 | Tool | Link |
 | ---- | ---- |
 | TensorFlow | https://www.tensorflow.org |
-| Keras | https://keras.io |
-| Octave | https://www.gnu.org/software/octave |
 
+### Resources
+
+* **Generic**
+
+	* On Neural Networks:
+
+		https://towardsdatascience.com/train-test-split-and-cross-validation-in-python-80b61beca4b6
+
+	* On CNN Architectures:
+	
+		https://adeshpande3.github.io/adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html
+		https://www.topbots.com/14-design-patterns-improve-convolutional-neural-network-cnn-architecture/
+		https://wiki.tum.de/display/lfdv/Convolutional+Neural+Network+Architectures#ConvolutionalNeuralNetworkArchitectures-AlexNet
+	
+	* On CNN Implementations
+		
+		http://cs231n.github.io/
+		https://www.cs.toronto.edu/~frossard/vgg16/vgg16.py
+		https://benanne.github.io/2015/03/17/plankton.html
+
+* **Papers**
+
+	https://pdfs.semanticscholar.org/cb49/ac9618bb2f8271409f91d53254a095d843d5.pdf
+
+* **Other**
+
+	https://www.kaggle.com/c/state-farm-distracted-driver-detection/discussion/22631
