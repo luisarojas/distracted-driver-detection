@@ -63,6 +63,16 @@ We will accomplish the above using Python as our programming language and either
 		https://www.cs.toronto.edu/~frossard/vgg16/vgg16.py
 		https://benanne.github.io/2015/03/17/plankton.html
 		http://soteriasafedriving.com/
+		
+	* On Pre-Trained Models
+	
+		https://www.cs.toronto.edu/~frossard/post/vgg16/
+		https://github.com/ethereon/caffe-tensorflow
+		https://github.com/tensorflow/models/tree/master/research/slim#Pretrained
+		https://kwotsin.github.io/tech/2017/02/11/transfer-learning.html
+		https://kratzert.github.io/2017/02/24/finetuning-alexnet-with-tensorflow.html
+		https://www.kernix.com/blog/image-classification-with-a-pre-trained-deep-neural-network_p11
+		http://cv-tricks.com/tensorflow-tutorial/save-restore-tensorflow-models-quick-complete-tutorial/
 
 * **Papers**
 
