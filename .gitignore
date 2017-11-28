@@ -1,8 +1,7 @@
 .DS_Store
 
-# unzipped data
+# unzipped full data
 dataset/original/
-dataset/driver_imgs_list.csv*
 
 # practice projects
 cnn-test/
