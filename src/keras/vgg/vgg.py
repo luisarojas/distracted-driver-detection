@@ -3,6 +3,7 @@
 
 # In[1]:
 
+from keras.callbacks import EarlyStopping, ModelCheckpoint
 from keras.preprocessing.image import ImageDataGenerator, load_img, img_to_array
 from keras.models import Sequential
 from keras.layers import Dropout,Flatten, Dense
@@ -188,7 +189,7 @@ def train_top_model():
 def test_model(model):
     
     # Load the TESTING data and labels
-    test_data, test_labels = load_data_and_labels(test_features_file, test_dir) 
+    test_data, test_labels = load_data_and_labels(vgg_test_features_file, test_dir) 
     
     #Obtain a final Accuracy
     (loss, accuracy) = model.evaluate(test_data, test_labels, batch_size=batch_size, verbose=1)        
@@ -262,7 +263,7 @@ if __name__ == "__main__":
     #extract_vgg16_features() #Computationally heavy step
     
     # ----------STEP 2-----------
-    model = train_top_model()
+    model, history = train_top_model()
     
     # ----------STEP 3-----------
     test_model(model)
