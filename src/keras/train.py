@@ -7,7 +7,6 @@ from keras import backend as K
 from model import create_model
 
 model = create_model()
-
 model.compile(loss='categorical_crossentropy',
               optimizer='rmsprop',
               metrics=['accuracy'])
@@ -40,10 +39,7 @@ val_datagen = ImageDataGenerator(
 
 test_datagen = ImageDataGenerator(
             rotation_range=10, # range (0-180) within which to randomly rotate pictures
-            # width_shift_range=0.2, # as fraction of width, range within to which randomly translate pictures
-            # height_shift_range=0.2, # same as above, but with height
             rescale=1./255, # RBG coefficient values 0-255 are too hight to process. instead, represent them as values 0-1
-            # shear_range=0.2, # random shearing transformations
             zoom_range=0.1, # randomly zooming inside pictures
             horizontal_flip=False,
             fill_mode='nearest') # strategy for filling in newly created pixels, which can appear after a rotation or a width/height shift
@@ -86,9 +82,6 @@ checkpoint_callback = ModelCheckpoint(
 
 early_stop_callback = EarlyStopping(
                 monitor='val_acc',
-                # verbose=0, # decides what to print
-                # min_delta=0, # threshold to whether quantify a loss at some epoch as improvement or not. If the difference of loss is below min_delta, it is quantified as no improvement
-                # mode='auto', # depends on the direction of the monitored quantity (is it supposed to be decreasing or increasing), since we monitor the loss, we can use min.        
                 patience=3,
                 mode='max') 
 

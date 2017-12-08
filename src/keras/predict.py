@@ -45,13 +45,12 @@ decoded_predictions = dict(zip(class_labels, predictions[0]))
 # sort dictionary by value
 decoded_predictions = sorted(decoded_predictions.items(), key=operator.itemgetter(1), reverse=True)
 
-# print image
-plt.imshow(image)
-plt.axis('off')
-plt.show()
-
 count = 1
 for key, value in decoded_predictions[:5]:
     print("{}. {}: {:8f}%".format(count, key, value*100))
     count+=1
 
+# print image
+plt.imshow(image)
+plt.axis('off')
+plt.show()
