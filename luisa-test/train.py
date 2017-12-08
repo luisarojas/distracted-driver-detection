@@ -150,14 +150,7 @@ def train_top_model():
     # ---------- TEST MODEL ----------
     # TODO: test with TESTING data under ../dataset/split_data/test/
     
-    test_generator = top_datagen.flow_from_directory(
-                        '../dataset/split_data/test/',
-                        target_size=(224, 224),
-                        batch_size=batch_size,
-                        class_mode='categorical',
-                        shuffle=False)
-    
-    score, acc = model.evaluate_generator(test_generator, len(test_generator.filenames))
+    loss, acc = model.evaluate(validation_data, validation_labels, batch_size=batch_size, verbose=1)
 
     print("score: ", score)
     print("accuracy:", acc)
