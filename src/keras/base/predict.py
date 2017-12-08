@@ -29,15 +29,10 @@ image_arr = img_to_array(image) # convert from PIL Image to NumPy array
 # to be able to pass it through the network and use batches, we want it with shape (1, 224, 224, 3)
 image_arr = np.expand_dims(image_arr, axis=0)
 
-data_datagen = ImageDataGenerator(
-            rescale=1./255, # RBG coefficient values 0-255 are too hight to process. instead, represent them as values 0-1
-            fill_mode='nearest') # strategy for filling in newly created pixels, which can appear after a rotation or a width/height shift
-
-# this is a similar generator, for test data
-data_generator = data_datagen.flow(image_arr)
+image_arr /= 255
 
 # classify given an image
-predictions = model.predict_generator(data_generator)
+predictions = model.predict(image_arr)
 
 # get human-readable labels of the preditions, as well as the corresponding probability
 decoded_predictions = dict(zip(class_labels, predictions[0]))
