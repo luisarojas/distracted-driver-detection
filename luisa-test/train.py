@@ -16,7 +16,7 @@
 # 2. Train a small network using the saved features to classify our classes, and save that model (the "top model")
 # 3. Use both the VGG16 model and the top model to make predictions.
 
-# In[ ]:
+# In[1]:
 
 from keras.preprocessing.image import ImageDataGenerator, img_to_array, load_img
 from keras.models import Sequential
@@ -27,17 +27,17 @@ from keras import applications
 from keras.utils.np_utils import to_categorical
 import matplotlib.pyplot as plt  
 import math
+import numpy as np
 
 
-# In[ ]:
+# In[2]:
 
 target_size=(224, 224)
-path_top_model_weights = "bottleneck_fc_model.h5"
 epochs = 5 # number of epochs to train the top model
 batch_size = 16 # to be used by flow_from_directory and predict_generator
 
 
-# In[ ]:
+# In[3]:
 
 # save the bottleneck features from the VGG16 model
 def save_bottleneck_features():
@@ -85,7 +85,7 @@ def save_bottleneck_features():
     np.save('bottleneck_features_val.npy', bottleneck_features_val)
 
 
-# In[ ]:
+# In[4]:
 
 # train the top model
 def train_top_model():
@@ -145,18 +145,22 @@ def train_top_model():
                 batch_size=batch_size,
                 validation_data=(vgg_val_data, val_labels))
     
-    model.save_weights(path_top_model_weights)
+    model.save_weights("bottleneck_fc_model.h5")
     
     # ---------- TEST MODEL ----------
+    # TODO: test with TESTING data under ../dataset/split_data/test/
     
-    loss, acc = model.evaluate(  
-                        vgg_val_data,
-                        val_labels,
+    test_generator = test_datagen.flow_from_directory(
+                        '../dataset/split_data/test',
+                        target_size=(150, 150),
                         batch_size=batch_size,
-                        verbose=1)
+                        class_mode='categorical',
+                        shuffle=False)
+    
+    score, acc = model.evaluate_generator(test_generator, len(test_generator.filenames))
 
-    print("loss: {}".format(loss))
-    print("accuracy: {:.5f}%".format(acc * 100))
+    print("score: ", score)
+    print("accuracy:", acc)
     
     plt.figure(1)  
     
@@ -182,13 +186,8 @@ def train_top_model():
     plt.show()
 
 
-# In[ ]:
+# In[5]:
 
-save_bottleneck_features()
+# save_bottleneck_features()
 train_top_model()
-
-
-# In[ ]:
-
-
 
