@@ -11,5 +11,5 @@ cnn-test/
 project-presentation/
 
 *~
-bottleneck_features_train.npy
-bottleneck_features_validation.npy
+*.npy
+*.npy
