@@ -16,7 +16,7 @@
 # 2. Train a small network using the saved features to classify our classes, and save that model (the "top model")
 # 3. Use both the VGG16 model and the top model to make predictions.
 
-# In[1]:
+# In[ ]:
 
 from keras.preprocessing.image import ImageDataGenerator, img_to_array, load_img
 from keras.models import Sequential
@@ -30,14 +30,14 @@ import math
 import numpy as np
 
 
-# In[7]:
+# In[ ]:
 
 target_size=(224, 224)
 epochs = 1 # number of epochs to train the top model
 batch_size = 16 # to be used by flow_from_directory and predict_generator
 
 
-# In[3]:
+# In[ ]:
 
 # save the bottleneck features from the VGG16 model
 def save_bottleneck_features():
@@ -85,7 +85,7 @@ def save_bottleneck_features():
     np.save('bottleneck_features_val.npy', bottleneck_features_val)
 
 
-# In[4]:
+# In[ ]:
 
 # train the top model
 def train_top_model():
@@ -150,12 +150,13 @@ def train_top_model():
     # ---------- TEST MODEL ----------
     # TODO: test with TESTING data under ../dataset/split_data/test/
     
-    loss, acc = model.evaluate(validation_data, validation_labels, batch_size=batch_size, verbose=1)
+    test_data, test_labels = load_data_and_labels(test_features_file, test_dir)
+    (loss, accuracy) = model.evaluate(test_data, test_labels, batch_size=batch_size, verbose=1)
 
-    print("score: ", score)
+    print("score: ", loss)
     print("accuracy:", acc)
     
-    plt.figure(1)  
+    plt.figure()  
     
     # ---------- PLOT TRAINING AND TESTING RESULTS ----------
    
@@ -179,7 +180,7 @@ def train_top_model():
     plt.show()
 
 
-# In[6]:
+# In[ ]:
 
 # save_bottleneck_features()
 train_top_model()
