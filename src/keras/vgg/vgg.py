@@ -19,7 +19,7 @@ from math import ceil
 # In[2]:
 
 #Tweakable
-epochs = 3
+epochs = 5
 batch_size = 16
 
 #Constants
@@ -97,11 +97,13 @@ def extract_vgg16_features():
 # In[5]:
 
 def create_top_model(final_activation,input_shape):
+    
     model = Sequential()  
     model.add(Flatten(input_shape=input_shape))  
     model.add(Dense(256, activation='relu'))  
     model.add(Dropout(0.5))  
     model.add(Dense(num_classes, activation=final_activation)) # sigmoid to train, softmax for prediction
+    
     return model
 
 
@@ -145,23 +147,38 @@ def train_top_model():
     val_data, val_labels = load_data_and_labels(vgg_val_features_file, val_dir)    
     
     #Create the top model to be trained
-    model = create_top_model("sigmoid",train_data.shape[1:])
+    model = create_top_model("sigmoid", train_data.shape[1:])
     
     #Compile the model
     model.compile(optimizer="rmsprop", loss="categorical_crossentropy", metrics=["accuracy"])
+
+    checkpoint_callback = ModelCheckpoint(
+                            top_model_weights_path,
+                            monitor='val_acc',
+                            verbose=1,
+                            save_best_only=True,
+                            mode='max')
+
+    early_stop_callback = EarlyStopping(
+                            monitor='val_acc',
+                            patience=3,
+                            mode='max') 
+
+    callbacks_list = [checkpoint_callback, early_stop_callback]
     
     #Train the model
-    model.fit(train_data, 
-              train_labels,
-              epochs=epochs,
-              batch_size=batch_size,
-              validation_data=(val_data, val_labels)
-             )
+    history = model.fit(
+                train_data,
+                train_labels,
+                epochs=epochs,
+                batch_size=batch_size,
+                validation_data=(val_data, val_labels),
+                callbacks=callbacks_list)
     
     #Save the trained weights of the model
-    model.save_weights(top_model_weights_path)    
+    # model.save_weights(top_model_weights_path)    
 
-    return model
+    return model, history
 
 
 # # Test the model
@@ -171,7 +188,7 @@ def train_top_model():
 def test_model(model):
     
     # Load the TESTING data and labels
-    test_data, test_labels = load_data_and_labels(vgg_test_features_file, test_dir) 
+    test_data, test_labels = load_data_and_labels(test_features_file, test_dir) 
     
     #Obtain a final Accuracy
     (loss, accuracy) = model.evaluate(test_data, test_labels, batch_size=batch_size, verbose=1)        
@@ -215,7 +232,7 @@ def get_prediction_from_image(img_path):
     bottleneck_prediction = model.predict(image) 
     
     # build top model  
-    model = create_top_model("softmax",bottleneck_prediction.shape[1:])
+    model = create_top_model("softmax", bottleneck_prediction.shape[1:])
 
     model.load_weights(top_model_weights_path)  
 
@@ -242,7 +259,7 @@ def get_prediction_from_image(img_path):
 if __name__ == "__main__":
     
     # ----------STEP 1-----------
-    extract_vgg16_features() #Computationally heavy step
+    #extract_vgg16_features() #Computationally heavy step
     
     # ----------STEP 2-----------
     model = train_top_model()
