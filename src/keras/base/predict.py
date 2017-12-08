@@ -8,7 +8,8 @@ import numpy as np
 import operator
 import matplotlib.pyplot as plt
 
-img_path = "../../../dataset/split_data/test/c0/img_41813.jpg"
+img_path = "./20171208_001153.jpg"
+# img_path = "../../../dataset/split_data/test/c0/img_41813.jpg"
 class_labels = ['safe_driving', 'texting_right', 'talking_on_phone_right', 'texting_left', 'talking_on_phone_left',
                 'operating_radio', 'drinking', 'reaching_behind', 'doing_hair_makeup', 'talking_to_passanger']
 
