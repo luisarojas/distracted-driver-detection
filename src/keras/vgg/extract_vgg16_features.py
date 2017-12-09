@@ -22,7 +22,7 @@ train_generator = datagen.flow_from_directory(
 num_train_samples = len(train_generator.filenames)
 
 # obtain steps required per epoch
-train_steps = cel(num_train_samples/batch_size)
+train_steps = ceil(num_train_samples/batch_size)
 
 # obtain deep/bottleneck features from vgg for the training data and save them
 vgg_train_features = model.predict_generator(train_generator, steps=train_steps, verbose=1)
@@ -42,7 +42,7 @@ val_generator = datagen.flow_from_directory(
 num_val_samples = len(val_generator.filenames)
 
 # obtain steps required per epoch
-val_steps = cel(num_val_samples/batch_size)
+val_steps = ceil(num_val_samples/batch_size)
 
 # obtain deep/bottleneck features from vgg for the validation data and save them
 vgg_val_features = model.predict_generator(val_generator, steps=val_steps, verbose=1)
@@ -62,7 +62,7 @@ test_generator = datagen.flow_from_directory(
 num_test_samples = len(test_generator.filenames)
 
 # obtain steps required per epoch
-test_steps = cel(num_test_samples/batch_size)
+test_steps = ceil(num_test_samples/batch_size)
 
 # obtain deep/bottleneck features from vgg for the testing data and save them
 vgg_test_features = model.predict_generator(test_generator, steps=test_steps, verbose=1)

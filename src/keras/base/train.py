@@ -1,18 +1,3 @@
-
-# coding: utf-8
-
-# ## Convnet trained from scratch
-
-# #### Data pre-processing and data augmentation
-
-# " Data augmentation is one way to fight overfitting, but it isn't enough since our augmented samples are still highly correlated. Your main focus for fighting overfitting should be the **entropic capacity** of your model --how much information your model is allowed to store. A model that can store a lot of information has the potential to be more accurate by leveraging more features, but it is also more at risk to start storing irrelevant features. Meanwhile, a model that can only store a few features will have to focus on the most significant features found in the data, and these are more likely to be truly relevant and to generalize better.
-# 
-# There are different ways to modulate entropic capacity. The main one is the choice of the number of parameters in your model, i.e. the number of layers and the size of each layer. Another way is the use of weight regularization, such as $L_1$ or $L_2$ regularization, which consists in forcing model weights to taker smaller values."
-
-# "Dropout also helps reduce overfitting, by preventing a layer from seeing twice the exact same pattern, thus acting in a way analoguous to data augmentation (you could say that both dropout and data augmentation tend to disrupt random correlations occuring in your data)."
-
-# In[1]:
-
 from keras.preprocessing.image import ImageDataGenerator
 from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D
@@ -20,19 +5,14 @@ from keras.layers import Activation, Dropout, Flatten, Dense
 from keras.callbacks import EarlyStopping, ModelCheckpoint
 from keras import backend as K
 from model import create_model
-
-
-# In[2]:
+from math import ceil
 
 model = create_model()
 model.compile(loss='categorical_crossentropy',
               optimizer='rmsprop',
               metrics=['accuracy'])
 
-
 # Prepare the data
-
-# In[3]:
 
 # using flow_from_directory(), generate batches of image data (and their labels)
 batch_size = 40
@@ -58,9 +38,7 @@ val_datagen = ImageDataGenerator(
             fill_mode='nearest') # strategy for filling in newly created pixels, which can appear after a rotation or a width/height shift
 
 
-# Generate batches of augmented image data, given the path of the original images
-
-# In[5]:
+# generate batches of augmented image data, given the path of the original images
 
 # instantiate generators of augmented image batches (and their labels) via .flow(data, labels) or .flow_from_directory(directory)
 # this generator will read pictures found in subfolders and indefinitely generate batches of augmented image data
@@ -78,9 +56,8 @@ val_generator = val_datagen.flow_from_directory(
         class_mode='categorical')
 
 
-# Use the generators above to train the model.
-
-# In[6]:
+# use the generators above to train the model
+# stop when the val accuracy stops getting better
 
 filepath="weights.h5"
 
@@ -101,19 +78,13 @@ early_stop_callback = EarlyStopping(
 
 callbacks_list = [checkpoint_callback, early_stop_callback]
 
-
-# In[7]:
-
 history = model.fit_generator(
             train_generator,
-            steps_per_epoch=len(train_generator.filenames) // batch_size,
+            steps_per_epoch=(ceil(len(train_generator.filenames) // batch_size)),
             epochs=50,
             validation_data=val_generator,
-            validation_steps=len(val_generator.class_indices) // batch_size,
+            validation_steps=(ceil(len(val_generator.filenames) // batch_size)),
             callbacks=callbacks_list)
-
-
-# In[ ]:
 
 
 
