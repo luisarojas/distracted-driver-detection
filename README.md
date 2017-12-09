@@ -24,7 +24,7 @@
 
 	* **Train the model**: `python train_top.py`
 	
-	* **Test the model:**: `python test.py [-h] [--acc] [--cm] [--roc]`, where at least one must be used. `acc` will output the total accuracy of the model, `cm` will draw a confusion matrix, and `roc` will plot the receiver operating characteristic for this model.
+	* **Test the model**: `python test.py [-h] [--acc] [--cm] [--roc]`, where at least one must be used. `acc` will output the total accuracy of the model, `cm` will draw a confusion matrix, and `roc` will plot the receiver operating characteristic for this model.
 	
 	* **Predict from an image**: `predict.py [-h] [--image IMAGE] [--hide_img]`, where the `image` flag is to be followed by the path to an image *(optional)*; if none is provided, the default will be used. The `hide_img` flag is to avoid the display of the image on termination *(optional)*.
 
