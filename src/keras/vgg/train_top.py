@@ -5,7 +5,7 @@ import numpy as np
 from keras.callbacks import EarlyStopping, ModelCheckpoint
 
 # global variables
-epochs = 5
+epochs = 50
 
 datagen = ImageDataGenerator(rescale=1./225)
 
