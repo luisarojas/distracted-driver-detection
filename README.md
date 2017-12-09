@@ -1,10 +1,10 @@
 ### Dependencies
 
-`Python 3.6.1`
-`Tensorflow 1.3.0`
-`Keras 2.1.2`
-`matplotlib 2.0.2`
-`numpy 1.12.1`
+* `Python 3.6.1`
+* `Tensorflow 1.3.0`
+* `Keras 2.1.2`
+* `matplotlib 2.0.2`
+* `numpy 1.12.1`
 
 ### Run the Code
 
@@ -27,6 +27,8 @@
 	* **Test the model:**: `python test.py [-h] [--acc] [--cm] [--roc]`, where at least one must be used. `acc` will output the total accuracy of the model, `cm` will draw a confusion matrix, and `roc` will plot the receiver operating characteristic for this model.
 	
 	* **Predict from an image**: `predict.py [-h] [--image IMAGE] [--hide_img]`, where the `image` flag is to be followed by the path to an image *(optional)*; if none is provided, the default will be used. The `hide_img` flag is to avoid the display of the image on termination *(optional)*.
+
+	*Note: Since the notebooks may not all be fully updated yet, the best way to run these programs is using the python scripts.*
 
 # Detecting Distracted Drivers
 
