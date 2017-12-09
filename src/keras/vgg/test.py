@@ -1,3 +1,22 @@
+
+# ---------- HANDLE COMMAND LINE ARGUMENTS ----------
+
+import argparse
+import sys
+
+parser = argparse.ArgumentParser(description="Predict the class of a given driver image. You must select at least one metric to display: [acc, cm, roc]")
+parser.add_argument("--acc", action="store_true", help="will calculate loss and accuracy")
+parser.add_argument("--cm", action="store_true", help="will plot confusion matrix")
+parser.add_argument("--roc", action="store_true", help="will plot roc curve")
+
+# exit if no arguments are passed
+if len(sys.argv) == 1:
+    parser.print_help()
+    sys.exit(1)
+    
+# otherwise, continue
+args = parser.parse_args()
+
 from keras.preprocessing.image import ImageDataGenerator
 from helper import target_size, batch_size, num_classes, create_top_model, class_labels, class_labels_encoded
 import numpy as np
@@ -6,6 +25,8 @@ from sklearn.metrics import confusion_matrix
 import itertools
 import matplotlib.pyplot as plt
 from sklearn.metrics import roc_curve,auc
+
+# ---------- FUNCTION DEFINITIONS ----------
 
 def plot_confusion_matrix(y_true, y_pred):
     
@@ -92,14 +113,18 @@ model.load_weights("res/_top_model_weights.h5")
 
 model.compile(optimizer="rmsprop", loss="categorical_crossentropy", metrics=["accuracy"])
 
-loss, acc = model.evaluate(test_data, test_labels_onehot, batch_size=batch_size, verbose=1)
-
-print()
-print("loss: ", loss)
-print("accuracy: {:8f}%".format(acc*100))
-
 predicted = model.predict_classes(test_data)
-predicted_onehot = to_categorical(predicted, num_classes=num_classes)
 
-plot_confusion_matrix(test_labels, predicted)
-plot_roc(test_labels_onehot, predicted_onehot)
+# ---------- DISPLAY INFORMATION DEPENDING ON COMMAND LINE FLAGS ----------
+
+if args.acc:
+    loss, acc = model.evaluate(test_data, test_labels_onehot, batch_size=batch_size, verbose=1)
+    print("loss: ", loss)
+    print("accuracy: {:8f}%".format(acc*100))
+
+if args.cm:
+    plot_confusion_matrix(test_labels, predicted)
+    
+if args.roc:
+    predicted_onehot = to_categorical(predicted, num_classes=num_classes)
+    plot_roc(test_labels_onehot, predicted_onehot)
