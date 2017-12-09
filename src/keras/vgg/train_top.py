@@ -49,7 +49,7 @@ val_labels_onehot = to_categorical(val_labels, num_classes=num_classes)
 
 # create the top model to be trained
 model = create_top_model("softmax", train_data.shape[1:])
-model.compile(optimizer="rmsprop", loss="categorical_crossentropy", metrics=["accuracy"])
+model.compile(optimizer="rmsprop", loss="categorical_crossentropy", metrics=["accuracy", "precision", "recall"])
 
 # only save the best weights. if the accuracy doesnt improve in 2 epochs, stop.
 checkpoint_callback = ModelCheckpoint(

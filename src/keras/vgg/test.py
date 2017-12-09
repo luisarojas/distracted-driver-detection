@@ -3,6 +3,9 @@ from helper import target_size, batch_size, num_classes, create_top_model
 import numpy as np
 from keras.utils.np_utils import to_categorical
 
+def plot_confusion_matrix():
+    
+
 datagen = ImageDataGenerator(rescale=1.0/255.0) 
 
 # ---------- GET TESTING DATA ----------
@@ -29,7 +32,7 @@ model.load_weights("_top_model_weights.h5")
 print(test_data.shape)
 print(test_data.shape[1:])
 
-model.compile(optimizer="rmsprop", loss="categorical_crossentropy", metrics=["accuracy"])
+model.compile(optimizer="rmsprop", loss="categorical_crossentropy", metrics=["accuracy", "precision", "recall"])
 
 loss, acc = model.evaluate(test_data, test_labels_onehot, batch_size=batch_size, verbose=1)        
 
