@@ -11,7 +11,6 @@ model.compile(loss='categorical_crossentropy',
               optimizer='rmsprop',
               metrics=['accuracy'])
 
-
 # Prepare the data
 
 # using flow_from_directory(), generate batches of image data (and their labels)
