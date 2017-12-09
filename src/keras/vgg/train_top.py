@@ -1,13 +1,41 @@
+import argparse
+import sys
 from helper import create_top_model, num_classes, class_labels, target_size, batch_size
 from keras.utils.np_utils import to_categorical
 from keras.preprocessing.image import ImageDataGenerator
 import numpy as np
 from keras.callbacks import EarlyStopping, ModelCheckpoint
+import matplotlib.pyplot as plt
+
+# handling command line arguments
+parser = argparse.ArgumentParser(description="Predict the class of a given driver image. You must select at least one metric to display: [acc, cm, roc]")
+parser.add_argument("--hist", action="store_true", help="will calculate loss and accuracy")
+args = parser.parse_args()
 
 # global variables
 epochs = 50
-
 datagen = ImageDataGenerator(rescale=1./225)
+
+# ---------- PLOT HISTORY FUNCTION ----------
+
+def plot_history(history):
+    
+    # summarize history for accuracy
+    plt.plot(history.history['acc'])
+    plt.plot(history.history['val_acc'])
+    plt.title('model accuracy')
+    plt.ylabel('accuracy')
+    plt.xlabel('epoch')
+    plt.legend(['train', 'test'], loc='upper left')
+    plt.show()
+    # summarize history for loss
+    plt.plot(history.history['loss'])
+    plt.plot(history.history['val_loss'])
+    plt.title('model loss')
+    plt.ylabel('loss')
+    plt.xlabel('epoch')
+    plt.legend(['train', 'test'], loc='upper left')
+    plt.show()
 
 # ---------- LOAD TRAINING DATA ----------
 
@@ -76,3 +104,5 @@ history = model.fit(
             validation_data=(val_data, val_labels_onehot),
             callbacks=callbacks_list)
 
+if args.hist:
+    plot_history(history)

@@ -40,12 +40,12 @@ def predict_class(img_path):
 
     return np.asarray(predicted[0]) # float32
 
-for file in os.listdir(data_path):
+for i, file in enumerate(os.listdir(data_path)):
     file_name = os.fsdecode(file)
 
     if file_name.endswith(".jpg"):
         
-        print(file_name, "...")
+        print(i, " ", file_name, "...")
         img_path = (os.path.join(data_path, file_name))
         
         predicted = predict_class(img_path)
