@@ -21,14 +21,14 @@ image_arr = np.expand_dims(image_arr, axis=0)
 model = applications.VGG16(include_top=False, weights='imagenet')  
 
 # get the bottleneck prediction from the pre-trained VGG16 model  
-bottleneck_prediction = model.predict(image_arr) 
+bottleneck_features = model.predict(image_arr) 
 
 # build top model  
-model = create_top_model("softmax", bottleneck_prediction.shape[1:])
+model = create_top_model("softmax", bottleneck_features.shape[1:])
 
 model.load_weights("_top_model_weights.h5")
 
-probs = model.predict(bottleneck_prediction) 
+probs = model.predict(bottleneck_features) 
 decoded_predictions = dict(zip(class_labels, probs[0]))
 decoded_predictions = sorted(decoded_predictions.items(), key=operator.itemgetter(1), reverse=True)
 

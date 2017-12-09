@@ -1,6 +1,8 @@
-from keras.preprocessing.image import ImageDataGenerator,
+from keras.preprocessing.image import ImageDataGenerator
 from keras import applications
-from helper import target_size
+from helper import target_size, batch_size
+from math import ceil
+import numpy as np
 
 datagen = ImageDataGenerator(rescale=1./255)
 
@@ -24,6 +26,7 @@ train_steps = cel(num_train_samples/batch_size)
 
 # obtain deep/bottleneck features from vgg for the training data and save them
 vgg_train_features = model.predict_generator(train_generator, steps=train_steps, verbose=1)
+print('Saving deep features for training data...')
 np.save('vgg_train_features.npy', vgg_train_features)
 
 # ---------- VALIDATION DATA----------
@@ -43,6 +46,7 @@ val_steps = cel(num_val_samples/batch_size)
 
 # obtain deep/bottleneck features from vgg for the validation data and save them
 vgg_val_features = model.predict_generator(val_generator, steps=val_steps, verbose=1)
+print('Saving deep features for validation data...')
 np.save('vgg_val_features.npy', vgg_val_features)
 
 # ---------- TESTING DATA----------
@@ -62,4 +66,5 @@ test_steps = cel(num_test_samples/batch_size)
 
 # obtain deep/bottleneck features from vgg for the testing data and save them
 vgg_test_features = model.predict_generator(test_generator, steps=test_steps, verbose=1)
+print('Saving deep features for testing data...')
 np.save('vgg_test_features.npy', vgg_test_features)
