@@ -39,10 +39,10 @@ bottleneck_features = model.predict(image_arr)
 # build top model  
 model = create_top_model("softmax", bottleneck_features.shape[1:])
 
-model.load_weights("_top_model_weights.h5")
+model.load_weights("res/_top_model_weights.h5")
 
-probs = model.predict(bottleneck_features) 
-decoded_predictions = dict(zip(class_labels, probs[0]))
+predicted = model.predict(bottleneck_features) 
+decoded_predictions = dict(zip(class_labels, predicted[0]))
 decoded_predictions = sorted(decoded_predictions.items(), key=operator.itemgetter(1), reverse=True)
 
 count = 1

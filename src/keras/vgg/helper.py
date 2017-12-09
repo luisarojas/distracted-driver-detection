@@ -3,9 +3,10 @@ from keras.layers import Dropout, Flatten, Dense
 
 target_size = 224, 224
 batch_size = 16
-num_classes = 10 # the same for all cases of training, testing and predicting
+class_labels_encoded = ['c0', 'c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 'c9']
 class_labels = ['safe_driving', 'texting_right', 'talking_on_phone_right', 'texting_left', 'talking_on_phone_left',
                 'operating_radio', 'drinking', 'reaching_behind', 'doing_hair_makeup', 'talking_to_passanger']
+num_classes = len(class_labels)
 
 def create_top_model(activation_func, input_shape):
     

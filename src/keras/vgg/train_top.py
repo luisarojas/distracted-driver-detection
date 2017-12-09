@@ -22,7 +22,7 @@ train_generator = datagen.flow_from_directory(
 num_train_samples = len(train_generator.filenames)
 
 # load vgg features
-train_data = np.load('vgg_train_features.npy')
+train_data = np.load('res/vgg_train_features.npy')
 
 train_labels = train_generator.classes
 train_labels_onehot = to_categorical(train_labels, num_classes=num_classes)
@@ -40,7 +40,7 @@ val_generator = datagen.flow_from_directory(
 num_val_samples = len(val_generator.filenames)
 
 # load vgg features
-val_data = np.load('vgg_val_features.npy')
+val_data = np.load('res/vgg_val_features.npy')
 
 val_labels = val_generator.classes
 val_labels_onehot = to_categorical(val_labels, num_classes=num_classes)
@@ -49,11 +49,11 @@ val_labels_onehot = to_categorical(val_labels, num_classes=num_classes)
 
 # create the top model to be trained
 model = create_top_model("softmax", train_data.shape[1:])
-model.compile(optimizer="rmsprop", loss="categorical_crossentropy", metrics=["accuracy", "precision", "recall"])
+model.compile(optimizer="rmsprop", loss="categorical_crossentropy", metrics=["accuracy"])
 
 # only save the best weights. if the accuracy doesnt improve in 2 epochs, stop.
 checkpoint_callback = ModelCheckpoint(
-                        "top_model_weights.h5", # store weights with this file name
+                        "res/top_model_weights.h5", # store weights with this file name
                         monitor='val_acc',
                         verbose=1,
                         save_best_only=True,
