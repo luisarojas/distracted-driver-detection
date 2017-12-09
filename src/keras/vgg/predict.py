@@ -4,8 +4,21 @@ import numpy as np
 from keras import applications
 import operator
 import matplotlib.pyplot as plt
+import argparse
 
 img_path = "../../../dataset/split_data/test/c0/img_42043.jpg"
+hide_img = False # default is to display image after predictions
+
+a = argparse.ArgumentParser(description="Predict the class of a given driver image.")
+a.add_argument("--image", help="path to image")
+a.add_argument("--hide_img", action="store_true", help="do not display image on prediction termination")
+args = a.parse_args()
+
+if args.hide_img:
+    hide_img = True
+    
+if args.image is not None:
+    img_path = args.image
 
 # prepare image for classification using keras utility functions
 image = load_img(img_path, target_size=target_size)
@@ -37,7 +50,8 @@ for key, value in decoded_predictions[:5]:
     print("{}. {}: {:8f}%".format(count, key, value*100))
     count += 1
     
-# print image
-plt.imshow(image)
-plt.axis('off')
-plt.show()
+if not hide_img:
+    # print image
+    plt.imshow(image)
+    plt.axis('off')
+    plt.show()
