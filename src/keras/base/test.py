@@ -1,24 +1,14 @@
-
-# coding: utf-8
-
-# In[ ]:
-
 from keras.models import Sequential, load_model
 from keras.layers import Conv2D, MaxPooling2D
 from keras.layers import Activation, Dropout, Flatten, Dense
 from keras.preprocessing.image import ImageDataGenerator
-
-
-# In[ ]:
+from model import create_model
 
 model = create_model()
 model.load_weights("weights.h5")
 model.compile(loss='categorical_crossentropy',
               optimizer='rmsprop',
               metrics=['accuracy'])
-
-
-# In[ ]:
 
 batch_size = 16
 test_datagen = ImageDataGenerator(
@@ -33,13 +23,10 @@ test_datagen = ImageDataGenerator(
 
 # this is a similar generator, for test data
 test_generator = test_datagen.flow_from_directory(
-        '../dataset/split_data/test',
+        '../../../dataset/split_data/test',
         target_size=(150, 150),
         batch_size=batch_size,
         class_mode='categorical')
-
-
-# In[ ]:
 
 score, acc = model.evaluate_generator(test_generator, 4490)
 

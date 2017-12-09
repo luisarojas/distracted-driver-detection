@@ -1,83 +1,48 @@
-# MCSC6230G Advanced Topics in High-Performance Computing - Project
+### Dependencies
 
-## Details
+`Python 3.6.1`
+`Tensorflow 1.3.0`
+`Keras 2.1.2`
+`matplotlib 2.0.2`
+`numpy 1.12.1`
 
-### Deliverables
+### Run the Code
 
-**Description**: Focus on how Machine Learning is applied to a problem, rather than the actual implementation. Work in pairs is allowed.
+Directory Path: `/src/keras/base`
 
-<strike>**Proposal**: Due Oct. 31st, 2017.</strike>
+* **Simple CNN in Keras**
 
-**Project Presentation**: November 29th, 2017
-> 10 minutes (7 minute presentation + demo, 3 min QA and discussion)
-
-**Project Report**: December 8th, 2017
-
-### Objective
-
-Predict the likelihood of what the driver is doing in each of the pictures in the   dataset.
-
-### Method
-
-We will split the data, where 70% will correspond to the training set, and the remaining 30% will correspond to the test set. After, the ratio can be adjusted as we see fit, depending on the network’s behaviour.
-
-First, we will implement a simple Feedforward Neural Network with a single hidden layer. In order to minimize the change of overfitting, we will apply regularization to find the optimal 2 value.
-
-Once this value has been found, we will increase the number of hidden layers. After, the number of hidden layers will be increased depending on it’s performance. It’s important to note that this will involve an unknown upper bound, since we are limited by computational power.
-
-Finally, we will implement a Convolutional Neural Network and observe how it performs against the aforementioned methods. The differences of the methods applied will be illustrated through several graphs in terms of efficiency and accuracy. Our hypothesis is that this method will outperform the rest and will be accurate enough to qualify for the competition’s leaderboards.
-
-We will accomplish the above using Python as our programming language and either Tensorflow or Keras as our framework, or using the Octave programming language.
-
-## Resources
-
-### Data Sets
-
-| Description | Link |
-| ----------- | ---- |
-| Kaggle: "State Farm Distracted Driver Detection" | https://www.kaggle.com/c/state-farm-distracted-driver-detection/data |
-
-### Machine Learning
-
-| Tool | Link |
-| ---- | ---- |
-| TensorFlow | https://www.tensorflow.org |
-
-### Resources
-
-* **Generic**
-
-	* On Neural Networks:
-
-		https://towardsdatascience.com/train-test-split-and-cross-validation-in-python-80b61beca4b6
-
-	* On CNN Architectures:
+	* **Train the model**: `python train.py`
 	
-		https://adeshpande3.github.io/adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html
-		https://www.topbots.com/14-design-patterns-improve-convolutional-neural-network-cnn-architecture/
-		https://wiki.tum.de/display/lfdv/Convolutional+Neural+Network+Architectures#ConvolutionalNeuralNetworkArchitectures-AlexNet
+	* **Test**
 	
-	* On CNN Implementations Using Same Dataset
-		
-		http://cs231n.github.io/
-		https://www.cs.toronto.edu/~frossard/vgg16/vgg16.py
-		https://benanne.github.io/2015/03/17/plankton.html
-		http://soteriasafedriving.com/
-		
-	* On Pre-Trained Models
-	
-		https://www.cs.toronto.edu/~frossard/post/vgg16/
-		https://github.com/ethereon/caffe-tensorflow
-		https://github.com/tensorflow/models/tree/master/research/slim#Pretrained
-		https://kwotsin.github.io/tech/2017/02/11/transfer-learning.html
-		https://kratzert.github.io/2017/02/24/finetuning-alexnet-with-tensorflow.html
-		https://www.kernix.com/blog/image-classification-with-a-pre-trained-deep-neural-network_p11
-		http://cv-tricks.com/tensorflow-tutorial/save-restore-tensorflow-models-quick-complete-tutorial/
+	* **Predict**: `predict.py [-h] [--image IMAGE] [--hide_img]`, where the `image` flag is to be followed by the path to an image *(optional)*, and the `hide_flag`  is to avoid the display of the image on termination *(optional)*.
 
-* **Papers**
+# About
 
-	https://pdfs.semanticscholar.org/cb49/ac9618bb2f8271409f91d53254a095d843d5.pdf
+## Objective
 
-* **Other**
+Predict the likelihood of what the driver is doing in each of the pictures in the dataset.
 
-	https://www.kaggle.com/c/state-farm-distracted-driver-detection/discussion/22631
+## Dataset
+
+https://www.kaggle.com/c/state-farm-distracted-driver-detection/data
+
+The dataset consists on a set of images, each taken in a car where the driver is doing some action (e.g. texting, talking on the phone, doing their makeup). These are some examples:
+
+<img src="./readme_res/1.jpg" width=200> <img src="./readme_res/2.jpg" width=200> <img src="./readme_res/3.jpg" width=200>
+
+The images are labeled following a set of 10 categories:
+
+|Class|Description|
+|-----|-----------|
+| `c0` | Safe driving. |
+| `c1` | Texting (right hand). |
+| `c2` | Talking on the phone (right hand). |
+| `c3` | Texting (left hand). |
+| `c4` | Talking on the phone (left hand). |
+| `c5` | Operating the radio. |
+| `c6` | Drinking. |
+| `c7` | Reaching behind. |
+| `c8` | Hair and makeup. |
+| `c9` | Talking to passenger(s). |
