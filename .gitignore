@@ -3,12 +3,6 @@
 # unzipped full data
 dataset/original/
 
-# sample data
-dataset/split_data-sample
-
-# practice projects
-cnn-test/
-project-presentation/
-
+# deep features
 *~
 *.npy
