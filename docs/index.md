@@ -4,9 +4,7 @@ The objective of this work is to successfully predict the likelihood of what a d
 
 The data consists on a set of images, each taken in a car where the driver is doing some action (e.g. texting, talking on the phone, doing their makeup). These are some examples:
 
-<div markdown="0">
-<img src="../readme_res/1.jpg" width=200> <img src="../readme_res/2.jpg" width=200> <img src="../readme_res/3.jpg" width=200>
-</div>
+<img src="../readme_res/1.jpg" width="200"> <img src="../readme_res/2.jpg" width="200"> <img src="../readme_res/3.jpg" width="200">
 
 The images are labeled following a set of 10 categories:
 
