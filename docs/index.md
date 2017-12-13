@@ -4,7 +4,7 @@ The objective of this work is to successfully predict the likelihood of what a d
 
 The data consists on a set of images, each taken in a car where the driver is doing some action (e.g. texting, talking on the phone, doing their makeup). These are some examples:
 
-<img src="../readme_res/1.jpg" width="200"> <img src="../readme_res/2.jpg" width="200"> <img src="../readme_res/3.jpg" width="200">
+<img src="../../readme_res/1.jpg" width="200"> <img src="../../readme_res/2.jpg" width="200"> <img src="../../readme_res/3.jpg" width="200">
 
 The images are labeled following a set of 10 categories:
 
@@ -21,7 +21,7 @@ The images are labeled following a set of 10 categories:
 | `c8` | Hair and makeup. |
 | `c9` | Talking to passenger(s). |
 
-<img src="../readme_res/predict.gif" height=210> <img src="../readme_res/predict-cl.gif" height=235>
+<img src="../../readme_res/predict.gif" height="210"> <img src="../../readme_res/predict-cl.gif" height="235">
 
 ## Running the Code
 
