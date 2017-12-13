@@ -6,6 +6,8 @@ a = argparse.ArgumentParser(description="Generate predictions for test images pr
 a.add_argument("-f", "--filename", help='csv file name to save the generated predictions to (default: predictions.csv)', default='predictions.csv')
 args = a.parse_args()
 
+filename = args.filename
+
 ### ---------- Import Relevand Libraries ----------
 
 from keras.preprocessing.image import load_img, img_to_array
@@ -73,8 +75,8 @@ all_entries = all_entries[np.argsort(all_entries[:,0])]
 # print(all_entries)
 
 import csv
-with open(args.filename, 'w') as csvfile:
-    filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+with open(filename, 'w') as csvfile:
+    filewriter = csv.writer(csvfile, delimiter=',')
     filewriter.writerow(csv_header)
     for row in all_entries:
         filewriter.writerow(row)
