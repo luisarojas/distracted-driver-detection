@@ -3,3 +3,6 @@ name: Distracted Driver Detection
 description: Predicting the likelihood of what the driver is doing in each of the pictures in the dataset.
 author: Alexandar Mihaylov and Luisa Rojas
 theme: jekyll-theme-minimal
+markdown: kramdown
+kramdown:
+    parse_block_html: true
