@@ -1,5 +1,5 @@
-title: Classifying Drivers' Actions using Convolutional Neural Networks
-name: Classifying Drivers
-description: Final project for MCSC 6230G
+title: Distracted Driver Detection Using Convolutional Neural Networks and Transfer Learning
+name: Distracted Driver Detection
+description: Predicting the likelihood of what the driver is doing in each of the pictures in the dataset.
 author: Alexandar Mihaylov and Luisa Rojas
 theme: jekyll-theme-minimal
