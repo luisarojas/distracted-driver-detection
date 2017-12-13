@@ -1,4 +1,4 @@
-# Detecting Distracted Drivers
+## Detecting Distracted Drivers
 
 The objective of this work is to successfully predict the likelihood of what a driver is doing in each of the pictures in the dataset<sup>[1](#kaggle)</sup>..
 
@@ -23,7 +23,9 @@ The images are labeled following a set of 10 categories:
 
 <img src="readme_res/predict.gif" height=210> <img src="readme_res/predict-cl.gif" height=235>
 
-# Dependencies
+## Running the Code
+
+### Dependencies
 
 * `Python 3.6.1`
 * `Tensorflow 1.3.0`
@@ -31,7 +33,7 @@ The images are labeled following a set of 10 categories:
 * `matplotlib 2.0.2`
 * `numpy 1.12.1`
 
-# Run the Code
+### Command-line Execution
 
 * **Simple CNN in Keras**
 
