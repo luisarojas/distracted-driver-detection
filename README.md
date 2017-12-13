@@ -1,6 +1,6 @@
 ## Detecting Distracted Drivers
 
-The objective of this work is to successfully predict the likelihood of what a driver is doing in each of the pictures in the dataset<sup>[1](#kaggle)</sup>..
+The objective of this work is to successfully predict the likelihood of what a driver is doing in each of the pictures in the dataset<sup>[1](#kaggle)</sup>.
 
 The data consists on a set of images, each taken in a car where the driver is doing some action (e.g. texting, talking on the phone, doing their makeup). These are some examples:
 
