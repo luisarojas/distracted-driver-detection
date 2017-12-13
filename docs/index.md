@@ -21,7 +21,7 @@ The images are labeled following a set of 10 categories:
 | `c8` | Hair and makeup. |
 | `c9` | Talking to passenger(s). |
 
-<img src="./readme_res/predict.gif" height="210"> <img src="./readme_res/predict-cl.gif" height="235">
+<img src="./res/predict.gif" height="210"> <img src="./res/predict-cl.gif" height="235">
 
 ## Running the Code
 
