@@ -1,3 +1,22 @@
+### ---------- Handle Command Line Arguments ----------
+
+import argparse
+
+hide_img = False # default is to display image after predictions
+
+a = argparse.ArgumentParser(description="Predict the class of a given driver image.")
+a.add_argument("--image", help="path to image", default='../../../dataset/split_data/test/c0/img_41813.jpg')
+a.add_argument("--hide_img", action="store_true", help="do NOT display image on prediction termination")
+args = a.parse_args()
+
+if args.hide_img:
+    hide_img = True
+    
+if args.image is not None:
+    img_path = args.image
+
+### ---------- Import Relevant Libraries ----------
+
 from keras.models import load_model
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
@@ -7,24 +26,12 @@ import numpy as np
 import operator
 from keras.preprocessing.image import ImageDataGenerator
 import matplotlib.pyplot as plt
-import argparse
 
-img_path = "../../../dataset/split_data/test/c0/img_41813.jpg"
+### ---------- Predict Image Class ----------
+
+img_path = args.image
 class_labels = ['safe_driving', 'texting_right', 'talking_on_phone_right', 'texting_left', 'talking_on_phone_left',
                 'operating_radio', 'drinking', 'reaching_behind', 'doing_hair_makeup', 'talking_to_passanger']
-
-hide_img = False # default is to display image after predictions
-
-a = argparse.ArgumentParser(description="Predict the class of a given driver image.")
-a.add_argument("--image", help="path to image")
-a.add_argument("--hide_img", action="store_true", help="do not display image on prediction termination")
-args = a.parse_args()
-
-if args.hide_img:
-    hide_img = True
-    
-if args.image is not None:
-    img_path = args.image
     
 model = create_model()
 model.load_weights("_weights.h5")
@@ -53,6 +60,7 @@ decoded_predictions = dict(zip(class_labels, predictions[0]))
 # sort dictionary by value
 decoded_predictions = sorted(decoded_predictions.items(), key=operator.itemgetter(1), reverse=True)
 
+print()
 count = 1
 for key, value in decoded_predictions[:5]:
     print("{}. {}: {:8f}%".format(count, key, value*100))

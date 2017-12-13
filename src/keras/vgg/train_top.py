@@ -1,3 +1,12 @@
+### ---------- Handle Command Line Arguments ----------
+
+import argparse
+
+a = argparse.ArgumentParser(description="Generate the missing top layers for the VGG16 model, then train it on own training data.")
+args = a.parse_args()
+
+### ---------- Import Relevant Libraries ----------
+
 from helper import create_top_model, num_classes, class_labels, target_size, batch_size
 from keras.utils.np_utils import to_categorical
 from keras.preprocessing.image import ImageDataGenerator

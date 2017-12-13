@@ -1,3 +1,22 @@
+### ---------- Handle Command Line Arguments ----------
+
+import argparse
+
+hide_img = False # default is to display image after predictions
+
+a = argparse.ArgumentParser(description="Predict the class of a given driver image.")
+a.add_argument("--image", help="path to image", default="../../../dataset/split_data/test/c0/img_42043.jpg")
+a.add_argument("--hide_img", action="store_true", help="do NOT display image on prediction termination")
+args = a.parse_args()
+
+if args.hide_img:
+    hide_img = True
+    
+if args.image is not None:
+    img_path = args.image
+    
+### ---------- Import Relevant Libraries ----------
+
 from keras.preprocessing.image import load_img, img_to_array
 from helper import create_top_model, class_labels, target_size
 import numpy as np
@@ -6,19 +25,7 @@ import operator
 import matplotlib.pyplot as plt
 import argparse
 
-img_path = "../../../dataset/split_data/test/c0/img_42043.jpg"
-hide_img = False # default is to display image after predictions
-
-a = argparse.ArgumentParser(description="Predict the class of a given driver image.")
-a.add_argument("--image", help="path to image")
-a.add_argument("--hide_img", action="store_true", help="do not display image on prediction termination")
-args = a.parse_args()
-
-if args.hide_img:
-    hide_img = True
-    
-if args.image is not None:
-    img_path = args.image
+img_path = args.image
 
 # prepare image for classification using keras utility functions
 image = load_img(img_path, target_size=target_size)
@@ -45,6 +52,7 @@ predicted = model.predict(bottleneck_features)
 decoded_predictions = dict(zip(class_labels, predicted[0]))
 decoded_predictions = sorted(decoded_predictions.items(), key=operator.itemgetter(1), reverse=True)
 
+print()
 count = 1
 for key, value in decoded_predictions[:5]:
     print("{}. {}: {:8f}%".format(count, key, value*100))

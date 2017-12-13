@@ -1,3 +1,12 @@
+### ---------- Handle Command Line Arguments ----------
+
+import argparse
+
+a = argparse.ArgumentParser(description="Evaluate the simple CNN model. The saved weights are loaded, then loss and accuracy are calculated.")
+args = a.parse_args()
+
+### ---------- Import Relevand Libraries ----------
+
 from keras.models import load_model
 from keras.preprocessing.image import ImageDataGenerator
 from model import create_model

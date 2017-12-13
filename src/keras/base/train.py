@@ -1,3 +1,13 @@
+### ---------- Handle Command Line Arguments ----------
+
+import argparse
+
+a = argparse.ArgumentParser(description="Train a simple CNN model and save improved weights.")
+a.add_argument("--bsize", help="provide batch size for training (default: 40)", type=int, default=40)
+args = a.parse_args()
+
+### ---------- Import Relevand Libraries ----------
+
 from keras.preprocessing.image import ImageDataGenerator
 from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D
@@ -15,7 +25,7 @@ model.compile(loss='categorical_crossentropy',
 # Prepare the data
 
 # using flow_from_directory(), generate batches of image data (and their labels)
-batch_size = 40
+batch_size = args.bsize
 
 train_datagen = ImageDataGenerator(
             rotation_range=10, # range (0-180) within which to randomly rotate pictures

@@ -1,3 +1,12 @@
+### ---------- Handle Command Line Arguments ----------
+
+import argparse
+
+a = argparse.ArgumentParser(description="Extracting the deep features from a pre-trained VGG16 model, using our own training data.")
+args = a.parse_args()
+
+### ---------- Import Relevand Libraries ----------
+
 from keras.preprocessing.image import ImageDataGenerator
 from keras import applications
 from helper import target_size, batch_size
