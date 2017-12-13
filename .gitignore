@@ -1,7 +1,11 @@
 .DS_Store
 
-# unzipped full data
+# data (available for download at https://www.kaggle.com/c/state-farm-distracted-driver-detection)
+dataset/split_data/train/
+dataset/split_data/test/
+dataset/split_data/validation/
 dataset/original/
+dataset/resized/
 
 # deep features
 *~
