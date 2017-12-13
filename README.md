@@ -21,6 +21,8 @@
 * **CNN with VGG16 Transfered Learning**
 
 	Directory Path: `/src/keras/vgg`
+	
+	* **Extract VGG16 deep features**: `python extract_vgg16_features.py`
 
 	* **Train the model**: `python train_top.py`
 	
